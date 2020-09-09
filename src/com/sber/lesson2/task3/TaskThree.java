@@ -1,4 +1,4 @@
-package com.sber.lesson2.Task3;
+package com.sber.lesson2.task3;
 
 import java.util.ArrayList;
 import java.util.Collections;
