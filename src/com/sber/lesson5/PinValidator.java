@@ -2,18 +2,28 @@ package com.sber.lesson5;
 
 import java.util.Scanner;
 
-public class PinValidator {
+public class PinValidator implements Runnable{
 
-    private int pinCard = 1234;
-    public long startTime = 0L;
+    private final int pinCard = 1234;
+    private final int MAX_LENGTH = 4;
+    public boolean pinLock = false;
 
     public boolean checkCard(int pinCard) {
         return this.pinCard == pinCard;
     }
 
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(10000);
+            pinLock = false;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public int getPinCard() {
         Scanner in = new Scanner(System.in);
-        final int MAX_LENGTH = 4;
         int numPin = 0;
         while (true) {
             System.out.print("Введите пин-код(4 цифры): ");

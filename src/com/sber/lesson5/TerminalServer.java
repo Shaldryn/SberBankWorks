@@ -14,7 +14,7 @@ public class TerminalServer {
     }
 
     public void getSum(int sum) throws Exception {
-        if (sum > this.sum) {
+        if (sum <= this.sum) {
             this.sum -= sum;
         } else {
             throw new Exception();
