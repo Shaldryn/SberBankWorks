@@ -1,5 +1,6 @@
 package com.sber.lesson6.reflection2_3_4;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class MyClassChild extends MyClass {
@@ -79,19 +80,13 @@ public class MyClassChild extends MyClass {
         Задача 4: Проверить что все String константы имеют значение = их имени
          */
         System.out.println("Check fields: ");
-//        Field[] fields = myObjectClass.getFields();
-//                for (Field field :
-//                fields) {
-//            System.out.println("field: " + field.isEnumConstant() + " " + field.getName());
-//        }
-
-        String[] arrayStrings = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"};
+        Field[] fields = myObjectClass.getFields();
         boolean result = true;
-        for (String nameString :
-                arrayStrings) {
-          if (myObjectClass.getDeclaredField(nameString).get(null) != nameString) {
-              result = false;
-          }
+        for (Field field :
+                fields) {
+            if (myObjectClass.getDeclaredField(field.getName()).get(null) != field.getName()) {
+                result = false;
+            }
         }
 
         System.out.println(result + ". All fields match!");
