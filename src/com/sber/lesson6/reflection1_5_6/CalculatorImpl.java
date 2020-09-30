@@ -1,9 +1,15 @@
-package com.sber.lesson6.reflection1;
+package com.sber.lesson6.reflection1_5_6;
 
 public class CalculatorImpl implements Calculator{
-    //Без кэша и расчета больших чисел
+    //Без расчета больших чисел
     @Override
     public int calc(int number) {
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         if (number < 0) {
             throw new IllegalArgumentException("Факторил не может быть рассчитан у отрицательных числах");
@@ -13,11 +19,6 @@ public class CalculatorImpl implements Calculator{
             return 1;
         }
         return number * calc(number - 1);
-    }
-
-    public static void main(String[] args) {
-        CalculatorImpl calculator = new CalculatorImpl();
-        System.out.println(calculator.calc(2));
     }
 
 }
